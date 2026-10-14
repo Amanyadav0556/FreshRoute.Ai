@@ -44,6 +44,9 @@ def solve_with_greedy(
         k = (o["destination_id"], o["commodity"].lower())
         remaining_demand[k] = remaining_demand.get(k, 0.0) + float(o.get("demanded_quantity_kg", 0.0))
 
+    # Destination total intake capacity tracker
+    remaining_dest_cap = {d["id"]: float(d.get("daily_demand_capacity_kg", 50000.0)) for d in destinations}
+
     allocations: List[PlanItem] = []
     total_alloc_kg = 0.0
     total_revenue = 0.0
@@ -61,9 +64,10 @@ def solve_with_greedy(
         avail_batch = remaining_batch_qty.get(b_id, 0.0)
         avail_veh = remaining_veh_cap.get(v_id, 0.0)
         demand_cap = remaining_demand.get(d_key, 2000.0)
+        dest_intake_cap = remaining_dest_cap.get(d_id, 50000.0)
 
         # Allocate minimum of available constraints
-        qty_to_assign = min(avail_batch, avail_veh, demand_cap)
+        qty_to_assign = min(avail_batch, avail_veh, demand_cap, dest_intake_cap)
         if qty_to_assign < 20.0:
             continue
 

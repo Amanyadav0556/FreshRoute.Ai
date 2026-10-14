@@ -58,7 +58,11 @@ def solve_with_highs(
     })
     num_demand_constraints = len(demand_keys)
 
-    total_constraints = num_batch_constraints + num_vehicle_constraints + num_demand_constraints
+    # Constraint 4: Total destination daily intake capacity ceilings
+    dest_ids = list({cand["destination"]["id"] for cand in candidates})
+    num_dest_constraints = len(dest_ids)
+
+    total_constraints = num_batch_constraints + num_vehicle_constraints + num_demand_constraints + num_dest_constraints
     A_ub = np.zeros((total_constraints, N), dtype=np.float64)
     b_ub = np.zeros(total_constraints, dtype=np.float64)
 
@@ -97,6 +101,16 @@ def solve_with_highs(
         b_ub[offset + row_idx] = max_demand
         for col_idx, cand in enumerate(candidates):
             if cand["destination"]["id"] == d_id and cand["batch"]["commodity"].lower() == comm:
+                A_ub[offset + row_idx, col_idx] = 1.0
+
+    # Fill total destination intake capacity constraints
+    offset = num_batch_constraints + num_vehicle_constraints + num_demand_constraints
+    dest_map = {d["id"]: d for d in destinations}
+    for row_idx, d_id in enumerate(dest_ids):
+        d_cap = float(dest_map[d_id].get("daily_demand_capacity_kg", 50000.0))
+        b_ub[offset + row_idx] = d_cap
+        for col_idx, cand in enumerate(candidates):
+            if cand["destination"]["id"] == d_id:
                 A_ub[offset + row_idx, col_idx] = 1.0
 
     # Variable bounds: 0 <= x_i <= infinity

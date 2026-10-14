@@ -40,7 +40,8 @@ class BaseDomainModel(BaseModel):
     model_config = ConfigDict(
         from_attributes=True,
         populate_by_name=True,
-        use_enum_values=True
+        use_enum_values=True,
+        protected_namespaces=(),
     )
 
 
