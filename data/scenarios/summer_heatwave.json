@@ -1,0 +1,18 @@
+{
+  "id": "scen-03",
+  "name": "Peak Summer Heatwave (+7°C)",
+  "category": "weather",
+  "description": "Daytime temperatures exceed 42°C in Marathwada & Thane transit belts. Non-refrigerated produce decays 40% faster.",
+  "severity": "high",
+  "parameter_overrides": [
+    {
+      "parameter_key": "ambient_shelf_life_decay_multiplier",
+      "parameter_label": "Ambient Spoilage Decay Rate",
+      "default_value": 1.0,
+      "override_value": 1.40,
+      "unit": "x multiplier",
+      "provenance": "simulated"
+    }
+  ],
+  "impact_summary": "Requires prioritization of reefer vehicles and local processing diversion."
+}
