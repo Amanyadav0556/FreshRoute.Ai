@@ -1,5 +1,4 @@
-"""
-FreshRoute AI — FastAPI Backend Entry Point
+"""FreshRoute AI — FastAPI Backend Entry Point
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,7 +6,21 @@ from contextlib import asynccontextmanager
 import logging
 
 from app.core.config import settings
-from app.api import health, batches, destinations, vehicles, routes, orders, plans, evaluations, assumptions, dashboard
+from app.api import (
+    health,
+    dashboard,
+    batches,
+    destinations,
+    vehicles,
+    routes,
+    orders,
+    plans,
+    discounts,
+    alerts,
+    evaluations,
+    scenarios,
+    assumptions,
+)
 
 logging.basicConfig(level=settings.log_level.upper())
 logger = logging.getLogger(__name__)
@@ -17,10 +30,10 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     logger.info("FreshRoute AI backend starting up...")
     logger.info(f"Environment: {settings.env}")
-    if not settings.supabase_url or settings.supabase_url == "https://YOUR_PROJECT_REF.supabase.co":
+    if not settings.supabase_configured:
         logger.warning(
             "⚠️  Supabase credentials not configured. "
-            "Running in SAMPLE DATA mode — no data will be persisted."
+            "Running in high-fidelity standalone SAMPLE DATA mode."
         )
     yield
     logger.info("FreshRoute AI backend shutting down.")
@@ -51,5 +64,8 @@ app.include_router(vehicles.router, prefix="/api/vehicles", tags=["Vehicles"])
 app.include_router(routes.router, prefix="/api/routes", tags=["Routes"])
 app.include_router(orders.router, prefix="/api/orders", tags=["Orders"])
 app.include_router(plans.router, prefix="/api/plans", tags=["Plans"])
+app.include_router(discounts.router, prefix="/api/discounts", tags=["Discounts"])
+app.include_router(alerts.router, prefix="/api/alerts", tags=["Alerts"])
 app.include_router(evaluations.router, prefix="/api/evaluations", tags=["Evaluations"])
+app.include_router(scenarios.router, prefix="/api/scenarios", tags=["Scenarios"])
 app.include_router(assumptions.router, prefix="/api/assumptions", tags=["Assumptions"])
