@@ -1,6 +1,6 @@
 """Pytest fixtures and test environment setup for FreshRoute AI."""
 import pytest
-from httpx import AsyncClient, ASGITransport
+from fastapi.testclient import TestClient
 import sys
 import os
 
@@ -43,7 +43,6 @@ def sample_orders():
 
 
 @pytest.fixture
-async def async_client():
-    transport = ASGITransport(app=app)
-    async with AsyncClient(transport=transport, base_url="http://test") as client:
-        yield client
+def client():
+    with TestClient(app) as test_client:
+        yield test_client
