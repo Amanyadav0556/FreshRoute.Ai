@@ -83,4 +83,11 @@ ASSUMPTIONS_REGISTRY: List[Dict[str, Any]] = [
 @router.get("", response_model=List[Dict[str, Any]])
 async def list_assumptions():
     """Discloses all 8 core scientific, economic, and logistical assumptions with provenance."""
-    return ASSUMPTIONS_REGISTRY
+    return [
+        {
+            **item,
+            "source": item.get("provenance", "real"),
+            "note": item.get("notes", ""),
+        }
+        for item in ASSUMPTIONS_REGISTRY
+    ]

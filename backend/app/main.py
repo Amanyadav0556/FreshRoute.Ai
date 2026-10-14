@@ -1,8 +1,9 @@
 """FreshRoute AI — FastAPI Backend Entry Point
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+from typing import Dict, Any, Optional
 import logging
 
 from app.core.config import settings
@@ -69,3 +70,10 @@ app.include_router(alerts.router, prefix="/api/alerts", tags=["Alerts"])
 app.include_router(evaluations.router, prefix="/api/evaluations", tags=["Evaluations"])
 app.include_router(scenarios.router, prefix="/api/scenarios", tags=["Scenarios"])
 app.include_router(assumptions.router, prefix="/api/assumptions", tags=["Assumptions"])
+
+
+@app.post("/api/replans", tags=["Plans"])
+async def replan_endpoint(payload: Dict[str, Any] = Body(default={})):
+    """Replanning endpoint triggered on disruption changes."""
+    scenario_id = payload.get("scenario_id")
+    return await plans.execute_optimization(strategy="freshroute", scenario_id=scenario_id)
