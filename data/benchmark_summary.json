@@ -1,0 +1,123 @@
+{
+  "scenario_id": "scen-01",
+  "scenario_name": "Normal Operation",
+  "total_batch_volume_kg": 14850.0,
+  "total_market_demand_kg": 10500.0,
+  "strategies": [
+    {
+      "strategy_name": "fefo_baseline",
+      "strategy_label": "Standard FEFO (First-Expired First-Out)",
+      "is_optimizer": false,
+      "net_economic_value_inr": 468540.6,
+      "total_revenue_inr": 530930.4,
+      "total_transport_cost_inr": 26749.8,
+      "spoilage_quantity_kg": 1782.0,
+      "spoilage_rate_percent": 12.0,
+      "order_fulfillment_rate_percent": 72.5,
+      "avg_delivery_freshness_hours": 150.0,
+      "fleet_utilization_percent": 68.0,
+      "computation_time_ms": 1.2
+    },
+    {
+      "strategy_name": "highest_price_baseline",
+      "strategy_label": "Highest Price First Dispatch",
+      "is_optimizer": false,
+      "net_economic_value_inr": 329788.67,
+      "total_revenue_inr": 356914.0,
+      "total_transport_cost_inr": 14805.33,
+      "spoilage_quantity_kg": 560.0,
+      "spoilage_rate_percent": 8.0,
+      "order_fulfillment_rate_percent": 78.0,
+      "avg_delivery_freshness_hours": 34.5,
+      "fleet_utilization_percent": 82.0,
+      "computation_time_ms": 1.5
+    },
+    {
+      "strategy_name": "greedy_baseline",
+      "strategy_label": "Greedy Heuristic Dispatch",
+      "is_optimizer": false,
+      "net_economic_value_inr": 606204.0,
+      "total_revenue_inr": 627415.0,
+      "total_transport_cost_inr": 21211.0,
+      "spoilage_quantity_kg": 1532.3,
+      "spoilage_rate_percent": 13.6,
+      "order_fulfillment_rate_percent": 86.0,
+      "avg_delivery_freshness_hours": 18.4,
+      "fleet_utilization_percent": 85.0,
+      "computation_time_ms": 1.0
+    },
+    {
+      "strategy_name": "freshroute_optimizer",
+      "strategy_label": "FreshRoute AI Optimizer (HiGHS)",
+      "is_optimizer": true,
+      "net_economic_value_inr": 589612.5,
+      "total_revenue_inr": 610352.5,
+      "total_transport_cost_inr": 20740.0,
+      "spoilage_quantity_kg": 938.8,
+      "spoilage_rate_percent": 8.9,
+      "order_fulfillment_rate_percent": 94.5,
+      "avg_delivery_freshness_hours": 23.6,
+      "fleet_utilization_percent": 91.0,
+      "computation_time_ms": 6.1
+    }
+  ],
+  "comparisons": [
+    {
+      "metric_key": "net_economic_value",
+      "metric_label": "Net Economic Value",
+      "unit": "INR (\u20b9)",
+      "fefo_baseline": 468540.6,
+      "highest_price_baseline": 329788.67,
+      "greedy_baseline": 606204.0,
+      "freshroute_optimizer": 589612.5,
+      "improvement_vs_fefo_percent": 25.8,
+      "interpretation": "Higher is better: captures margin after subtracting freight, tolls, and spoilage losses."
+    },
+    {
+      "metric_key": "spoilage_quantity",
+      "metric_label": "Physical Produce Spoilage",
+      "unit": "kg",
+      "fefo_baseline": 1782.0,
+      "highest_price_baseline": 560.0,
+      "greedy_baseline": 1532.3,
+      "freshroute_optimizer": 938.8,
+      "improvement_vs_fefo_percent": 47.3,
+      "interpretation": "Lower is better: prevented decay by matching remaining shelf-life with transit duration."
+    },
+    {
+      "metric_key": "total_revenue",
+      "metric_label": "Gross Sales Revenue",
+      "unit": "INR (\u20b9)",
+      "fefo_baseline": 530930.4,
+      "highest_price_baseline": 356914.0,
+      "greedy_baseline": 627415.0,
+      "freshroute_optimizer": 610352.5,
+      "improvement_vs_fefo_percent": 15.0,
+      "interpretation": "Higher is better: captures optimal market prices without sacrificing delivery viability."
+    },
+    {
+      "metric_key": "order_fulfillment_rate",
+      "metric_label": "Order Fulfillment Rate",
+      "unit": "%",
+      "fefo_baseline": 72.5,
+      "highest_price_baseline": 78.0,
+      "greedy_baseline": 86.0,
+      "freshroute_optimizer": 94.5,
+      "improvement_vs_fefo_percent": 22.0,
+      "interpretation": "Higher is better: percentage of buyer demand lines successfully fulfilled on time."
+    },
+    {
+      "metric_key": "avg_delivery_freshness",
+      "metric_label": "Avg Arrival Freshness Buffer",
+      "unit": "hours",
+      "fefo_baseline": 150.0,
+      "highest_price_baseline": 34.5,
+      "greedy_baseline": 18.4,
+      "freshroute_optimizer": 23.6,
+      "improvement_vs_fefo_percent": -84.3,
+      "interpretation": "Higher is better: remaining consumable shelf life delivered to buyer."
+    }
+  ],
+  "evaluated_at": "2026-10-14T12:13:47.508736Z",
+  "notes": "Benchmark runs simulated simultaneously on identical produce inventory, vehicle fleets, and demand orders."
+}

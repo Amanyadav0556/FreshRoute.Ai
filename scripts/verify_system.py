@@ -6,6 +6,12 @@ HiGHS optimizer, plan validation, and benchmark evaluation.
 import sys
 import os
 
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 # Add backend directory to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "backend")))
 
@@ -26,7 +32,7 @@ from app.services.evaluator import run_benchmark_evaluation
 
 def run_checks():
     print("=" * 60)
-    print("  FreshRoute AI — Verification & Integrity Test")
+    print("  FreshRoute AI - Verification & Integrity Test")
     print("=" * 60)
 
     # 1. Test Thermal Decay
@@ -65,7 +71,7 @@ def run_checks():
     )
     assert opt_plan is not None, "HiGHS should return a valid plan"
     assert opt_plan.net_economic_value_inr > 0, "Net value should be positive"
-    print(f"  [PASS] 5. HiGHS LP solver verified (₹{opt_plan.net_economic_value_inr:,.2f} net value).")
+    print(f"  [PASS] 5. HiGHS LP solver verified (INR {opt_plan.net_economic_value_inr:,.2f} net value).")
 
     # 6. Test Validator
     val = validate_dispatch_plan(opt_plan.allocations, SAMPLE_BATCHES, SAMPLE_VEHICLES, SAMPLE_DESTINATIONS)
