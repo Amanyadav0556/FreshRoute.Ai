@@ -1,0 +1,80 @@
+[
+  {
+    "id": "route-nsk-vashi",
+    "origin_name": "Nashik Central Hub",
+    "destination_id": "dest-vashi-01",
+    "destination_name": "Vashi APMC Mandi Hub",
+    "distance_km": 168.0,
+    "standard_travel_time_hours": 3.8,
+    "toll_charges_inr": 380.0,
+    "road_quality_factor": 1.05,
+    "ambient_temp_celsius": 31.0,
+    "effective_travel_time_hours": 4.0,
+    "provenance": "real"
+  },
+  {
+    "id": "route-nsk-dadar",
+    "origin_name": "Nashik Central Hub",
+    "destination_id": "dest-dadar-02",
+    "destination_name": "Dadar Wholesale Flower & Produce Market",
+    "distance_km": 175.0,
+    "standard_travel_time_hours": 4.2,
+    "toll_charges_inr": 420.0,
+    "road_quality_factor": 1.15,
+    "ambient_temp_celsius": 32.5,
+    "effective_travel_time_hours": 4.8,
+    "provenance": "real"
+  },
+  {
+    "id": "route-nsk-pune",
+    "origin_name": "Nashik Central Hub",
+    "destination_id": "dest-pune-03",
+    "destination_name": "Gultekdi Market Yard",
+    "distance_km": 210.0,
+    "standard_travel_time_hours": 4.8,
+    "toll_charges_inr": 310.0,
+    "road_quality_factor": 1.10,
+    "ambient_temp_celsius": 29.0,
+    "effective_travel_time_hours": 5.2,
+    "provenance": "real"
+  },
+  {
+    "id": "route-nsk-kalyan",
+    "origin_name": "Nashik Central Hub",
+    "destination_id": "dest-kalyan-04",
+    "destination_name": "Kalyan Regional Aggregation Market",
+    "distance_km": 135.0,
+    "standard_travel_time_hours": 3.0,
+    "toll_charges_inr": 290.0,
+    "road_quality_factor": 1.08,
+    "ambient_temp_celsius": 30.5,
+    "effective_travel_time_hours": 3.2,
+    "provenance": "real"
+  },
+  {
+    "id": "route-nsk-processor",
+    "origin_name": "Nashik Central Hub",
+    "destination_id": "dest-processor-05",
+    "destination_name": "Sahyadri Agro Processing Park",
+    "distance_km": 28.0,
+    "standard_travel_time_hours": 0.75,
+    "toll_charges_inr": 0.0,
+    "road_quality_factor": 1.00,
+    "ambient_temp_celsius": 27.0,
+    "effective_travel_time_hours": 0.75,
+    "provenance": "real"
+  },
+  {
+    "id": "route-nsk-retail",
+    "origin_name": "Nashik Central Hub",
+    "destination_id": "dest-retail-06",
+    "destination_name": "Blinkit Dark Store Hub Kurla",
+    "distance_km": 165.0,
+    "standard_travel_time_hours": 3.9,
+    "toll_charges_inr": 380.0,
+    "road_quality_factor": 1.12,
+    "ambient_temp_celsius": 31.5,
+    "effective_travel_time_hours": 4.4,
+    "provenance": "estimated"
+  }
+]
