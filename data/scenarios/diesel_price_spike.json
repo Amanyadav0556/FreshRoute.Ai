@@ -1,0 +1,18 @@
+{
+  "id": "scen-04",
+  "name": "Diesel Price Spike (+30%)",
+  "category": "market_shock",
+  "description": "Sudden commercial diesel fuel hike pushes per-km transport costs up by 30%.",
+  "severity": "medium",
+  "parameter_overrides": [
+    {
+      "parameter_key": "fuel_cost_multiplier",
+      "parameter_label": "Fleet Transport Cost Multiplier",
+      "default_value": 1.0,
+      "override_value": 1.30,
+      "unit": "x multiplier",
+      "provenance": "simulated"
+    }
+  ],
+  "impact_summary": "Penalizes long-haul dispatches and shifts marginal produce to regional hubs."
+}
