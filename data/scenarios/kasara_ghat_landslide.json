@@ -1,0 +1,26 @@
+{
+  "id": "scen-02",
+  "name": "Kasara Ghat Landslide Closure",
+  "category": "infrastructure",
+  "description": "Monsoon landslide shuts NH-160 Kasara Ghat corridor; Mumbai-bound traffic rerouted via Malshej Ghat (+95 km, +3.5 hours).",
+  "severity": "severe",
+  "parameter_overrides": [
+    {
+      "parameter_key": "nsk_mumbai_travel_time_hours",
+      "parameter_label": "Nashik-Mumbai Transit Time",
+      "default_value": 3.8,
+      "override_value": 7.3,
+      "unit": "hours",
+      "provenance": "simulated"
+    },
+    {
+      "parameter_key": "nsk_mumbai_distance_km",
+      "parameter_label": "Nashik-Mumbai Distance",
+      "default_value": 168.0,
+      "override_value": 263.0,
+      "unit": "km",
+      "provenance": "simulated"
+    }
+  ],
+  "impact_summary": "Extends transit time by 90%, putting ultra-perishable spinach and ripe tomatoes at high spoilage risk."
+}
