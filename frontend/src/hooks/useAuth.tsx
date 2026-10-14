@@ -81,7 +81,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, session, profile, loading, configured: supabaseConfigured, signIn, signUp, signOut }}
+      value={{ user, session, profile, loading, configured: Boolean(supabaseConfigured), signIn, signUp, signOut }}
     >
       {children}
     </AuthContext.Provider>

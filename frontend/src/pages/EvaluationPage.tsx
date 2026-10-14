@@ -81,7 +81,7 @@ export function EvaluationPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(220,13%,18%)" />
               <XAxis dataKey="name" tick={{ fontSize: 12, fill: 'hsl(215,20%,60%)' }} />
               <YAxis tickFormatter={v => `₹${(v/1000).toFixed(0)}k`} tick={{ fontSize: 11, fill: 'hsl(215,20%,60%)' }} />
-              <Tooltip formatter={(v: number) => formatINR(v)} contentStyle={{ background: 'hsl(220,16%,10%)', border: '1px solid hsl(220,13%,18%)' }} />
+              <Tooltip formatter={(v) => formatINR(Number(v))} contentStyle={{ background: 'hsl(220,16%,10%)', border: '1px solid hsl(220,13%,18%)' }} />
               <Bar dataKey="Net Value (₹)" fill="#22c55e" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

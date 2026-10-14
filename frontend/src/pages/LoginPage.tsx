@@ -9,14 +9,20 @@ import { useNavigate } from 'react-router-dom';
 const loginSchema = z.object({
   email: z.string().email('Enter a valid email'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
+  displayName: z.string().optional(),
 });
 
-const signupSchema = loginSchema.extend({
+const signupSchema = z.object({
+  email: z.string().email('Enter a valid email'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
   displayName: z.string().min(2, 'Name must be at least 2 characters'),
 });
 
-type LoginData = z.infer<typeof loginSchema>;
-type SignupData = z.infer<typeof signupSchema>;
+type FormData = {
+  email: string;
+  password: string;
+  displayName?: string;
+};
 
 export function LoginPage() {
   const [mode, setMode] = useState<'login' | 'signup'>('login');
@@ -24,11 +30,11 @@ export function LoginPage() {
   const { signIn, signUp, configured } = useAuth();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignupData>({
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(mode === 'login' ? loginSchema : signupSchema),
   });
 
-  async function onSubmit(data: SignupData) {
+  async function onSubmit(data: FormData) {
     setServerError('');
     const { error } = mode === 'login'
       ? await signIn(data.email, data.password)
