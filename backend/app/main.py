@@ -58,6 +58,7 @@ app.add_middleware(
 
 # Routers
 app.include_router(health.router, tags=["Health"])
+app.include_router(health.router, prefix="/api", tags=["Health"])
 app.include_router(dashboard.router, prefix="/api/dashboard", tags=["Dashboard"])
 app.include_router(batches.router, prefix="/api/batches", tags=["Batches"])
 app.include_router(destinations.router, prefix="/api/destinations", tags=["Destinations"])
@@ -70,6 +71,34 @@ app.include_router(alerts.router, prefix="/api/alerts", tags=["Alerts"])
 app.include_router(evaluations.router, prefix="/api/evaluations", tags=["Evaluations"])
 app.include_router(scenarios.router, prefix="/api/scenarios", tags=["Scenarios"])
 app.include_router(assumptions.router, prefix="/api/assumptions", tags=["Assumptions"])
+
+
+@app.get("/", tags=["Root"])
+@app.get("/api", tags=["Root"])
+async def root_endpoint():
+    """Welcoming root endpoint with quick links and backend health status."""
+    return {
+        "status": "online",
+        "service": "FreshRoute AI — Intelligent Produce Distribution & Discount Optimization API",
+        "version": "1.0.0",
+        "docs_url": "http://127.0.0.1:8000/docs",
+        "health_url": "http://127.0.0.1:8000/health",
+        "frontend_url": "http://127.0.0.1:5173",
+        "endpoints": {
+            "dashboard": "/api/dashboard/summary",
+            "batches": "/api/batches",
+            "destinations": "/api/destinations",
+            "vehicles": "/api/vehicles",
+            "routes": "/api/routes",
+            "orders": "/api/orders",
+            "plans": "/api/plans",
+            "discounts": "/api/discounts",
+            "alerts": "/api/alerts",
+            "evaluations": "/api/evaluations",
+            "scenarios": "/api/scenarios",
+            "assumptions": "/api/assumptions",
+        },
+    }
 
 
 @app.post("/api/replans", tags=["Plans"])

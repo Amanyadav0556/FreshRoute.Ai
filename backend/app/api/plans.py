@@ -144,9 +144,15 @@ async def execute_optimization(strategy: str = "freshroute", scenario_id: Option
     return format_plan_for_frontend(plan_dict, strategy=strategy, scenario_id=scenario_id)
 
 
+@router.get("")
+async def get_plans_default() -> Dict[str, Any]:
+    """Retrieves current dispatch plan for GET /api/plans."""
+    return await get_latest_plan()
+
+
 @router.post("")
 @router.post("/optimize")
-async def create_plan(payload: Dict[str, Any] = Body(...)) -> Dict[str, Any]:
+async def create_plan(payload: Dict[str, Any] = Body(default={})) -> Dict[str, Any]:
     """Generates an optimization dispatch plan matching the frontend request contract."""
     strategy = payload.get("strategy", "freshroute")
     scenario_id = payload.get("scenario_id")
