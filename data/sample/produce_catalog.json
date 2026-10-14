@@ -1,0 +1,74 @@
+[
+  {
+    "commodity": "Tomatoes",
+    "botanical_name": "Solanum lycopersicum",
+    "optimum_temperature_celsius": 12.5,
+    "optimum_relative_humidity_percent": 90,
+    "q10_respiration_factor": 2.2,
+    "ambient_shelf_life_hours": 72.0,
+    "cold_storage_shelf_life_hours": 336.0,
+    "ethylene_producer": true,
+    "ethylene_sensitive": true,
+    "price_elasticity": -1.35
+  },
+  {
+    "commodity": "Spinach (Palak)",
+    "botanical_name": "Spinacia oleracea",
+    "optimum_temperature_celsius": 4.0,
+    "optimum_relative_humidity_percent": 95,
+    "q10_respiration_factor": 2.8,
+    "ambient_shelf_life_hours": 28.0,
+    "cold_storage_shelf_life_hours": 168.0,
+    "ethylene_producer": false,
+    "ethylene_sensitive": true,
+    "price_elasticity": -1.80
+  },
+  {
+    "commodity": "Grapes",
+    "botanical_name": "Vitis vinifera",
+    "optimum_temperature_celsius": 1.0,
+    "optimum_relative_humidity_percent": 92,
+    "q10_respiration_factor": 2.0,
+    "ambient_shelf_life_hours": 120.0,
+    "cold_storage_shelf_life_hours": 720.0,
+    "ethylene_producer": false,
+    "ethylene_sensitive": false,
+    "price_elasticity": -1.10
+  },
+  {
+    "commodity": "Onions",
+    "botanical_name": "Allium cepa",
+    "optimum_temperature_celsius": 22.0,
+    "optimum_relative_humidity_percent": 65,
+    "q10_respiration_factor": 1.5,
+    "ambient_shelf_life_hours": 480.0,
+    "cold_storage_shelf_life_hours": 2160.0,
+    "ethylene_producer": false,
+    "ethylene_sensitive": false,
+    "price_elasticity": -0.75
+  },
+  {
+    "commodity": "Mangoes",
+    "botanical_name": "Mangifera indica",
+    "optimum_temperature_celsius": 13.0,
+    "optimum_relative_humidity_percent": 88,
+    "q10_respiration_factor": 2.4,
+    "ambient_shelf_life_hours": 96.0,
+    "cold_storage_shelf_life_hours": 360.0,
+    "ethylene_producer": true,
+    "ethylene_sensitive": true,
+    "price_elasticity": -1.25
+  },
+  {
+    "commodity": "Capsicum (Bell Pepper)",
+    "botanical_name": "Capsicum annuum",
+    "optimum_temperature_celsius": 8.0,
+    "optimum_relative_humidity_percent": 90,
+    "q10_respiration_factor": 2.1,
+    "ambient_shelf_life_hours": 60.0,
+    "cold_storage_shelf_life_hours": 288.0,
+    "ethylene_producer": false,
+    "ethylene_sensitive": true,
+    "price_elasticity": -1.40
+  }
+]
