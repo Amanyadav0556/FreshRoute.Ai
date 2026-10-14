@@ -1,0 +1,80 @@
+[
+  {
+    "id": "dest-vashi-01",
+    "name": "Vashi APMC Mandi Hub",
+    "city": "Navi Mumbai",
+    "state": "Maharashtra",
+    "latitude": 19.0760,
+    "longitude": 72.9986,
+    "market_type": "wholesale_mandi",
+    "unloading_handling_fee_per_kg": 0.60,
+    "avg_selling_price_multiplier": 1.15,
+    "daily_demand_capacity_kg": 25000.0,
+    "provenance": "real"
+  },
+  {
+    "id": "dest-dadar-02",
+    "name": "Dadar Wholesale Flower & Produce Market",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "latitude": 19.0178,
+    "longitude": 72.8478,
+    "market_type": "wholesale_mandi",
+    "unloading_handling_fee_per_kg": 0.75,
+    "avg_selling_price_multiplier": 1.25,
+    "daily_demand_capacity_kg": 15000.0,
+    "provenance": "real"
+  },
+  {
+    "id": "dest-pune-03",
+    "name": "Gultekdi Market Yard",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "latitude": 18.4965,
+    "longitude": 73.8647,
+    "market_type": "wholesale_mandi",
+    "unloading_handling_fee_per_kg": 0.50,
+    "avg_selling_price_multiplier": 1.08,
+    "daily_demand_capacity_kg": 20000.0,
+    "provenance": "real"
+  },
+  {
+    "id": "dest-kalyan-04",
+    "name": "Kalyan Regional Aggregation Market",
+    "city": "Thane/Kalyan",
+    "state": "Maharashtra",
+    "latitude": 19.2403,
+    "longitude": 73.1305,
+    "market_type": "wholesale_mandi",
+    "unloading_handling_fee_per_kg": 0.45,
+    "avg_selling_price_multiplier": 1.02,
+    "daily_demand_capacity_kg": 12000.0,
+    "provenance": "real"
+  },
+  {
+    "id": "dest-processor-05",
+    "name": "Sahyadri Agro Processing Park",
+    "city": "Dindori / Nashik",
+    "state": "Maharashtra",
+    "latitude": 20.1580,
+    "longitude": 73.8340,
+    "market_type": "processor",
+    "unloading_handling_fee_per_kg": 0.25,
+    "avg_selling_price_multiplier": 0.78,
+    "daily_demand_capacity_kg": 35000.0,
+    "provenance": "real"
+  },
+  {
+    "id": "dest-retail-06",
+    "name": "Blinkit Dark Store Hub Kurla",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "latitude": 19.0657,
+    "longitude": 72.8794,
+    "market_type": "modern_retail",
+    "unloading_handling_fee_per_kg": 0.85,
+    "avg_selling_price_multiplier": 1.30,
+    "daily_demand_capacity_kg": 8000.0,
+    "provenance": "estimated"
+  }
+]
